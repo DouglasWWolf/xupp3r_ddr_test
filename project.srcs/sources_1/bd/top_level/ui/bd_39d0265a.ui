@@ -9,29 +9,44 @@
 #  -string -flagsOSRD
 preplace port pcie_refclk -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
 preplace port pcie_mgt -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD -left
-preplace port m0_ddr4_clk -pg 1 -lvl 8 -x 1280 -y 230 -defaultsOSRD -right
-preplace port m0_ddr4 -pg 1 -lvl 8 -x 1280 -y 250 -defaultsOSRD
+preplace port m0_ddr4_clk -pg 1 -lvl 5 -x 1160 -y 60 -defaultsOSRD -right
+preplace port m0_ddr4 -pg 1 -lvl 5 -x 1160 -y 80 -defaultsOSRD
+preplace port m1_ddr4 -pg 1 -lvl 5 -x 1160 -y 170 -defaultsOSRD
+preplace port m2_ddr4 -pg 1 -lvl 5 -x 1160 -y 280 -defaultsOSRD
+preplace port m3_ddr4 -pg 1 -lvl 5 -x 1160 -y 390 -defaultsOSRD
+preplace port m1_ddr4_clk -pg 1 -lvl 5 -x 1160 -y 190 -defaultsOSRD -right
+preplace port m2_ddr4_clk -pg 1 -lvl 5 -x 1160 -y 300 -defaultsOSRD -right
+preplace port m3_ddr4_clk -pg 1 -lvl 5 -x 1160 -y 410 -defaultsOSRD -right
 preplace inst pcie -pg 1 -lvl 1 -x 150 -y 90 -defaultsOSRD -pinDir pcie_mgt left -pinY pcie_mgt 0L -pinDir pcie_refclk left -pinY pcie_refclk 20L -pinDir M_AXI_B right -pinY M_AXI_B 0R -pinDir axi_aclk right -pinY axi_aclk 20R -pinDir axi_aresetn right -pinY axi_aresetn 40R
 preplace inst axi_revision -pg 1 -lvl 3 -x 720 -y 90 -defaultsOSRD -pinDir S_AXI left -pinY S_AXI 0L -pinDir AXI_ACLK left -pinY AXI_ACLK 20L -pinDir AXI_ARESETN left -pinY AXI_ARESETN 40L
 preplace inst system_interconnect -pg 1 -lvl 2 -x 440 -y 90 -defaultsOSRD -pinDir S00_AXI left -pinY S00_AXI 0L -pinDir M00_AXI right -pinY M00_AXI 0R -pinDir M01_AXI right -pinY M01_AXI 140R -pinDir aclk left -pinY aclk 20L -pinDir aresetn left -pinY aresetn 40L
-preplace inst bank_0 -pg 1 -lvl 4 -x 990 -y 230 -defaultsOSRD -pinDir ddr4_clk right -pinY ddr4_clk 0R -pinDir ddr4 right -pinY ddr4 20R -pinDir start_write_async left -pinY start_write_async 0L -pinDir start_read_async left -pinY start_read_async 20L
+preplace inst bank_0 -pg 1 -lvl 4 -x 1000 -y 60 -defaultsOSRD -pinDir ddr4_clk right -pinY ddr4_clk 0R -pinDir ddr4 right -pinY ddr4 20R -pinDir start_write_async left -pinY start_write_async 0L -pinDir start_read_async left -pinY start_read_async 20L
 preplace inst control -pg 1 -lvl 3 -x 720 -y 230 -defaultsOSRD -pinDir S_AXI left -pinY S_AXI 0L -pinDir clk left -pinY clk 20L -pinDir resetn left -pinY resetn 40L -pinDir start_write right -pinY start_write 0R -pinDir start_read right -pinY start_read 20R
+preplace inst bank_1 -pg 1 -lvl 4 -x 1000 -y 170 -swap {3 1 2 0 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19} -defaultsOSRD -pinDir ddr4_clk right -pinY ddr4_clk 20R -pinDir ddr4 right -pinY ddr4 0R -pinDir start_write_async left -pinY start_write_async 0L -pinDir start_read_async left -pinY start_read_async 20L
+preplace inst bank_2 -pg 1 -lvl 4 -x 1000 -y 280 -swap {3 1 2 0 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19} -defaultsOSRD -pinDir ddr4_clk right -pinY ddr4_clk 20R -pinDir ddr4 right -pinY ddr4 0R -pinDir start_write_async left -pinY start_write_async 0L -pinDir start_read_async left -pinY start_read_async 20L
+preplace inst bank_3 -pg 1 -lvl 4 -x 1000 -y 390 -swap {3 1 2 0 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19} -defaultsOSRD -pinDir ddr4_clk right -pinY ddr4_clk 20R -pinDir ddr4 right -pinY ddr4 0R -pinDir start_write_async left -pinY start_write_async 0L -pinDir start_read_async left -pinY start_read_async 20L
+preplace netloc control_start_read 1 3 1 860 80n
+preplace netloc control_start_write 1 3 1 840 60n
 preplace netloc pcie_axi_aclk 1 1 2 280 10 600
 preplace netloc pcie_axi_aresetn 1 1 2 300 30 580
-preplace netloc control_start_read 1 3 1 N 250
-preplace netloc control_start_write 1 3 1 N 230
-preplace netloc C0_SYS_CLK_0_1 1 4 4 N 230 N 230 N 230 NJ
+preplace netloc C0_SYS_CLK_0_1 1 4 1 N 60
 preplace netloc CLK_IN_D_0_1 1 0 1 NJ 110
-preplace netloc ddr4_0_C0_DDR4 1 4 4 N 250 N 250 N 250 NJ
+preplace netloc ddr4_0_C0_DDR4 1 4 1 N 80
 preplace netloc pcie_M_AXI_B 1 1 1 N 90
 preplace netloc pcie_bridge_pcie_mgt 1 0 1 NJ 90
 preplace netloc system_interconnect_M00_AXI 1 2 1 N 90
 preplace netloc system_interconnect_M01_AXI 1 2 1 N 230
-levelinfo -pg 1 0 150 440 720 990 1160 1200 1240 1280
-pagesize -pg 1 -db -bbox -sgen -130 0 1420 330
+preplace netloc bank_1_ddr4 1 4 1 N 170
+preplace netloc bank_2_ddr4 1 4 1 N 280
+preplace netloc bank_3_ddr4 1 4 1 N 390
+preplace netloc ddr4_clk_0_1 1 4 1 N 190
+preplace netloc ddr4_clk_1_1 1 4 1 N 300
+preplace netloc ddr4_clk_2_1 1 4 1 N 410
+levelinfo -pg 1 0 150 440 720 1000 1160
+pagesize -pg 1 -db -bbox -sgen -130 0 1300 460
 ",
-   "No Loops_ScaleFactor":"0.982536",
-   "No Loops_TopLeft":"-123,-163",
+   "No Loops_ScaleFactor":"1.0",
+   "No Loops_TopLeft":"-172,-113",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
 preplace port port-id_clk -pg 1 -lvl 0 -x -10 -y 60 -defaultsOSRD
